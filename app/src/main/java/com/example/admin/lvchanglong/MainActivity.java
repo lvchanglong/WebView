@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.view.KeyEvent;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,6 +38,15 @@ public class MainActivity extends AppCompatActivity {
             view.loadUrl(url);
             return true;
         }
+    }
+	
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if ((keyCode == KeyEvent.KEYCODE_BACK) && webView.canGoBack()) {
+            webView.goBack();
+            return true;
+        }
+        return super.onKeyDown(keyCode,event);
     }
 
     @Override
